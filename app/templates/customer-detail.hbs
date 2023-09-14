@@ -1,0 +1,24 @@
+<h2>Customer Details:</h2>
+<div class="customer-detail">
+  <h3>Name: {{this.model.name}}</h3>
+  <p>Customer ID: {{this.model.customer_id}}</p>
+  <p>Email: {{this.model.email}}</p>
+  <p>Address: {{this.model.address}}</p>
+
+  <h2>Accounts:</h2>
+  <CreateAccount @value={{this.model.customer_id}}/>
+  {{this.checkAccount}}
+  {{#if this.account_found}}
+  <ul>
+    {{#each this.model.accounts as |account|}}
+      <li>
+        Account Number: {{account.account_no}}<br>
+        Balance: {{account.balance}}
+      </li>
+    {{/each}}
+  </ul>
+  {{else}}
+   <p>No accounts found</p>
+
+   {{/if}}
+</div>

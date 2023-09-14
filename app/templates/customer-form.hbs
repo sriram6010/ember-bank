@@ -1,0 +1,15 @@
+<form {{on "submit" this.customer.submitForm}}>
+    <h2>Create a customer: </h2>
+<div class="customer-form">
+    <label>E-mail:
+    <Input @type="text" @value={{this.customer.email}}/>
+    </label>
+    <label>Name:
+    <Input @type="text" @value={{this.customer.name}}/>
+    </label>
+    <label>Address:
+    <Input @type="text" @value={{this.customer.address}}/>
+    </label>
+    <button class="button" type="submit">Create</button>
+</div>
+</form>
