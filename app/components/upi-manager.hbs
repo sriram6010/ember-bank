@@ -1,0 +1,23 @@
+
+{{#unless this.showForm}}
+<button type="button" onclick={{fn this.toggle}}>{{@text}}</button>
+{{/unless}}
+{{#if @upi_id}}
+<button type="button" onclick={{fn this.toggle}}>{{@text}}</button>
+{{/if}}
+
+{{#if this.showForm}}
+<div class="register">
+<form class="register" {{on "submit" (fn this.upiAction @action)}}>
+    
+    <Input @value={{this.upi_id}} class="upi" @type="pattern" pattern="^[a-z]+@hdfc$" placeholder={{@name}} required/>
+    {{#if @isTransfer}}
+    <Input @value={{this.amount}} @type="number" placeholder="Enter the amount" required/>
+    {{/if}}
+    <Input @value={{this.pin}} type="number" pattern="\d{4}" placeholder="4-digit PIN" min="1000" max="9999" required/>
+   
+    <button type="submit">{{@buttonName}}</button>
+</form>
+</div>
+{{/if}}
+

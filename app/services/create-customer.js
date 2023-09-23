@@ -10,6 +10,7 @@ export default class CreateCustomerService extends Service {
   @tracked email = '';
   @tracked address = '';
   @tracked customer_id = '';
+  password='';
 
   @service router;
 
@@ -18,12 +19,13 @@ export default class CreateCustomerService extends Service {
     event.preventDefault();
 
     try {
-      const url = new URL('/bank-app/customer', window.location.origin);
+      const url = new URL('/bank-app/signup', window.location.origin);
 
       const data = {
         name: this.name,
         email: this.email,
         address: this.address,
+        password : this.password
       };
       url.search = new URLSearchParams(data);
       console.log(url.toString());

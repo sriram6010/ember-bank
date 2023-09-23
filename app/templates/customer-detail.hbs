@@ -13,7 +13,29 @@
     {{#each this.model.accounts as |account|}}
       <li>
         Account Number: {{account.account_no}}<br>
-        Balance: {{account.balance}}
+        Balance: {{account.balance}}<br>
+        UPI ID: {{account.upi_id}}
+        {{#if account.upi_id}}
+        <UpiManager
+        @text="Fund transfer?"
+        @name="receiver upi id"
+        @buttonName="Transfer"
+        @value={{account.upi_id}}
+        @action="transfer"
+        @isTransfer="true"
+        />
+        {{/if}}
+        {{#unless account.upi_id}}
+        {{this.setNewPlaceholder}}
+        <UpiManager 
+        @text = "Register to UPI?"
+        @name="yourname@hdfc" 
+        @buttonName="Register UPI"
+        @value={{account.account_no}}
+        @action="register"
+        @upi_id={{account.upi_id}}
+         />
+         {{/unless}}
       </li>
     {{/each}}
   </ul>

@@ -71,13 +71,21 @@ label {
   
 }
 
-input[type="text"] {
+.upi {
+  width: 25%;
+  padding: 4px;
+
+}
+
+.customer-form [type="text"], input[type="password"]{
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+
 
 .customer-detail {
   max-width: 600px;

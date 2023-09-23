@@ -1,0 +1,12 @@
+<form {{on "submit" this.login.submitForm}}>
+    <h2>Login: </h2>
+<div class="login-form">
+    <label>Customer ID:
+    <Input @type="integer" @value={{this.login.customer_id}}/>
+    </label>
+    <label>Password:
+    <Input @type="text" @value={{this.login.password}}/>
+    </label>
+    <button class="button" type="submit">Login</button>
+</div>
+</form>

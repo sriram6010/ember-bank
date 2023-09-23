@@ -1,7 +1,9 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
-
+import { service } from '@ember/service';
 export default class CustomerDetailRoute extends Route {
+  
+  @service router;
+
   async model(params) {
     //params.customer_id = params.customer_id.substring(1);
 
@@ -11,9 +13,13 @@ export default class CustomerDetailRoute extends Route {
     url.search = new URLSearchParams(params);
 
     const response = await fetch(url.toString());
+    if (response.status === 401){
+      localStorage.clear();
+      this.router.transitionTo('login');
+    }
     const customer = await response.json();
 
-    console.log(customer);
+    console.log("ss"+customer);
     return customer;
   }
 }

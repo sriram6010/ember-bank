@@ -24,10 +24,13 @@ export default class CreateAccountComponent extends Component {
       method: 'POST'
     }
     );
+    if (response.status === 401){
+      this.router.transitionTo('login');
+    } else if (response.ok){
     const account = await response.json();
-
-    alert("Account No: "+account.account_no);
+        alert("Account No: "+account.account_no);
     this.router.refresh();
+  }
 
   }
 }

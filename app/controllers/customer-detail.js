@@ -4,8 +4,8 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class CustomerDetailController extends Controller {
-  @tracked account_count;
-  @tracked account_found;
+  account_count;
+  account_found;
 
   get checkAccount() {
     console.log(this.model.accounts.length);
@@ -17,4 +17,5 @@ export default class CustomerDetailController extends Controller {
       this.account_found = true;
     }
   }
+
 }

@@ -9,5 +9,19 @@
     <LinkTo @route="contact" class="menu-contact">
       Contact
     </LinkTo>
+    {{this.logged}}
+  {{#unless this.isLoggedIn}}
+    <LinkTo @route="login" class="menu-login">
+      Login
+    </LinkTo>
+  {{/unless}}
+  {{#if this.isLoggedIn}}
+  <LinkTo @route="customer-detail" @model={{this.customer_id}} class="menu-detail">
+  My detail
+  </LinkTo>
+    <LinkTo @route="logout" class="menu-logout">
+      Logout 
+    </LinkTo>
+    {{/if}}
   </div>
 </nav>
