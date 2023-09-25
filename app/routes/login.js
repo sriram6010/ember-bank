@@ -8,7 +8,7 @@ export default class LoginRoute extends Route {
 
   
   model() {
-    localStorage.clear();
+    //localStorage.clear();
     let customer = this.customer;
       console.log("m c "+customer.customer_id);
     return customer;

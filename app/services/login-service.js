@@ -42,9 +42,9 @@ export default class LoginService extends Service {
         this.router.replaceWith('customer-detail', this.customer_id);
         //location.reload(true);
       } else {
-        alert(response.statusText);
+        alert("Login failed "+response.statusText);
         console.log(response.statusText);
-        //this.router.transitionTo('login');
+        this.router.transitionTo('login');
       }
     } catch (error) {
       console.error('HTTP Request Error:', error);

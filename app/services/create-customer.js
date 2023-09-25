@@ -45,6 +45,7 @@ export default class CreateCustomerService extends Service {
         const responseData = await response.json();
         this.response = responseData;
         this.customer_id = responseData.customer_id.trim();
+        localStorage.setItem("customer_id",responseData.customer_id);
         alert('Your customer_id: ' + responseData.customer_id);
         this.router.transitionTo('customer-detail', this.customer_id);
         console.log(responseData);
