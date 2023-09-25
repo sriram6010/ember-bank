@@ -4,6 +4,7 @@ import { service } from '@ember/service';
 export default class LogoutRoute extends Route {
 
     @service router;
+    @service('login-service') service;
 
     async model() {
     
@@ -12,10 +13,13 @@ export default class LogoutRoute extends Route {
     
         const response = await fetch(url.toString());
         if (response.ok){
-          localStorage.clear()
-          this.router.transitionTo('');
-        
+          localStorage.clear();
+          
+          this.service.checkLogin();
+          this.router.replaceWith('');
         }
       }
+
+
       
 }

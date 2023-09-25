@@ -27,6 +27,7 @@ export default class CreateCustomerService extends Service {
         address: this.address,
         password : this.password
       };
+      this.password='';
       url.search = new URLSearchParams(data);
       console.log(url.toString());
       //this.response = 'okk';

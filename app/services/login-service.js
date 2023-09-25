@@ -5,11 +5,11 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class LoginService extends Service {
-  @tracked customer_id = '';
-  password='';
+  @tracked customer_id;
+  @tracked isLoggedIn = false;
+  password;
 
   @service router;
-
 
   @action
   async submitForm(event) {
@@ -22,6 +22,7 @@ export default class LoginService extends Service {
         customer_id : this.customer_id,
         password : this.password
       };
+      this.password = null;
       url.search = new URLSearchParams(data);
       console.log(url.toString());
       //this.response = 'okk';
@@ -37,7 +38,8 @@ export default class LoginService extends Service {
       console.log(response);
       if (response.ok) {
         localStorage.setItem("customer_id",this.customer_id);
-        this.router.transitionTo('customer-detail', this.customer_id);
+        this.isLoggedIn = true;
+        this.router.replaceWith('customer-detail', this.customer_id);
         //location.reload(true);
       } else {
         alert(response.statusText);
@@ -50,32 +52,20 @@ export default class LoginService extends Service {
     }
   }
 
-  async logout(event) {
-    event.preventDefault();
-
-    try {
-      const url = new URL('/bank-app/logout', window.location.origin);
-
-  
-      
-      console.log(JSON.stringify(data));
-      const response = await fetch(url.toString(), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      console.log(response);
-      if (response.ok) {
-        this.router.transitionTo('customer-detail', this.customer_id);
+  @action
+  checkLogin(){
+    
+    let local = localStorage.getItem("customer_id");
+    console.log("checking login "+local);
+    if(local===null){
+      this.customer_id = null;
+      this.password = null;
+      this.isLoggedIn = false;
+      this.router.transitionTo('logout');
       } else {
-        console.log(response.toString());
-        //this.router.transitionTo('login');
+        this.customer_id = local;
+        this.isLoggedIn = true;
       }
-    } catch (error) {
-      console.error('HTTP Request Error:', error);
-      //this.response = 'Error: Failed to submit the form.';
-    }
   }
 
 

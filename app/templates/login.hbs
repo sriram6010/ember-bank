@@ -2,10 +2,10 @@
     <h2>Login: </h2>
 <div class="login-form">
     <label>Customer ID:
-    <Input @type="integer" @value={{this.login.customer_id}}/>
+    <Input @type="integer" @value={{this.login.customer_id}} required/>
     </label>
     <label>Password:
-    <Input @type="text" @value={{this.login.password}}/>
+    <Input @type="password" @value={{this.login.password}} required/>
     </label>
     <button class="button" type="submit">Login</button>
 </div>

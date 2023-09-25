@@ -1,9 +1,9 @@
 
 {{#unless this.showForm}}
-<button type="button" onclick={{fn this.toggle}}>{{@text}}</button>
+<button type="button" class="account-action" onclick={{fn this.toggle}}>{{@text}}</button>
 {{/unless}}
 {{#if @upi_id}}
-<button type="button" onclick={{fn this.toggle}}>{{@text}}</button>
+<button type="button" class="account-action" onclick={{fn this.toggle}}>{{@text}}</button>
 {{/if}}
 
 {{#if this.showForm}}
