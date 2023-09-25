@@ -1,0 +1,10 @@
+
+{{#unless this.showForm}}
+<button class="account-action" type="button" onclick={{fn this.toggle}}>Credit?</button>
+{{/unless}}
+{{#if this.showForm}}
+<div class="credit-form">
+<input type="number" placeholder="Enter the amount" {{on "input" this.updateAmount}} required/>
+  <button {{on "click" this.submitForm}}>Credit</button>
+</div>
+{{/if}}
